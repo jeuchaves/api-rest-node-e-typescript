@@ -5,7 +5,7 @@
 Rode no terminal esse comando:
 
 ```
-ts-node-dev ./src/index.ts
+npm run start
 ```
 
 Sua aplicação irá rodar em http://localhost:3333/
