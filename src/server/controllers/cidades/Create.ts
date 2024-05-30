@@ -7,19 +7,23 @@ interface ICidade {
     estado: string;
 }
 
-/* interface IFilter {
+interface IFilter {
     filter: string;
-} */
+}
 
-export const createValidation = validation({
-    body: object({
-        nome: string().required().min(3),
-        estado: string().required().min(3),
-    }),
-    query: object({
-        filter: string().required().min(3),
-    }),
-});
+export const createValidation = validation((getSchema) => ({
+    body: getSchema<ICidade>(
+        object({
+            nome: string().required().min(3),
+            estado: string().required().min(3),
+        })
+    ),
+    query: getSchema<IFilter>(
+        object({
+            filter: string().required().min(3),
+        })
+    ),
+}));
 
 export const create = async (req: Request<{}, {}, ICidade>, res: Response) => {
     console.log(req.body);
