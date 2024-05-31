@@ -4,6 +4,7 @@ import { number, object, string } from 'yup';
 
 import { validation } from '../../shared/middleware';
 import { ICidade } from '../../database/models';
+import { CidadesProvider } from '../../database/providers';
 
 interface IParamProps {
     id?: number;
@@ -27,9 +28,21 @@ export const updateById = async (
     req: Request<IParamProps, {}, IBodyProps>,
     res: Response
 ) => {
-    console.log(req.params);
-    console.log(req.body);
-    return res
-        .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .send('Não implementado');
+    if (!req.params.id) {
+        return res.status(StatusCodes.BAD_REQUEST).json({
+            errors: {
+                default: 'O parâmetro "id" precisa ser informado.',
+            },
+        });
+    }
+
+    const result = await CidadesProvider.updateById(req.params.id, req.body);
+    if (result instanceof Error) {
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            errors: {
+                default: result.message,
+            },
+        });
+    }
+    return res.status(StatusCodes.NO_CONTENT).json(result);
 };
