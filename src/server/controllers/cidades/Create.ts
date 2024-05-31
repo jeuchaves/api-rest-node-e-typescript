@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { object, string } from 'yup';
 
-import { CidadesProvider } from '../../database/providers/cidades';
+import { CidadesProvider } from '../../database/providers';
 import { validation } from '../../shared/middleware';
 import { ICidade } from '../../database/models';
 
