@@ -9,7 +9,11 @@
         "format": "prettier --write .",
         "start": "ts-node-dev ./src/index.ts",
         "build": "tsc",
-        "production": "node ./build/index.js"
+        "production": "node ./build/index.js",
+        "knex:rollback-all": "npx knex --knexfile ./src/server/database/knex/Environment.ts migrate:rollback --all",
+        "knex:rollback": "npx knex --knexfile ./src/server/database/knex/Environment.ts migrate:rollback",
+        "knex:migrate": "npx knex --knexfile ./src/server/database/knex/Environment.ts migrate:latest",
+        "knex:seed": "npx knex --knexfile ./src/server/database/knex/Environment.ts seed:run"
     },
     "author": "Jeú Chaves",
     "license": "ISC",
@@ -21,12 +25,12 @@
         "http-status-codes": "^2.3.0",
         "jest": "^29.7.0",
         "knex": "^3.1.0",
-        "sqlite": "^5.1.1",
         "supertest": "^7.0.0",
         "ts-jest": "^29.1.4",
         "yup": "^1.4.0"
     },
     "devDependencies": {
+        "sqlite3": "^5.1.7",
         "@types/express": "^4.17.21",
         "@typescript-eslint/eslint-plugin": "^5.30.6",
         "@typescript-eslint/parser": "^5.30.6",
