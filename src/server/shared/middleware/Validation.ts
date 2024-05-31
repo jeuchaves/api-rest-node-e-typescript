@@ -8,6 +8,7 @@ type TGetSchema = <T extends AnyObject | Maybe<AnyObject>>(
     schema: ObjectSchema<T>
 ) => ObjectSchema<T>;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type TAllSchemas = Record<TProperty, ObjectSchema<any>>;
 
 type TGetAllSchemas = (getSchema: TGetSchema) => Partial<TAllSchemas>;
