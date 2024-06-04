@@ -18,19 +18,19 @@
     "author": "Jeú Chaves",
     "license": "ISC",
     "dependencies": {
-        "@types/jest": "^29.5.12",
-        "@types/supertest": "^6.0.2",
         "dotenv": "^16.4.5",
         "express": "^4.19.2",
         "http-status-codes": "^2.3.0",
-        "jest": "^29.7.0",
         "knex": "^3.1.0",
-        "supertest": "^7.0.0",
-        "ts-jest": "^29.1.4",
-        "yup": "^1.4.0"
+        "yup": "^1.4.0",
+        "sqlite3": "^5.1.7"
     },
     "devDependencies": {
-        "sqlite3": "^5.1.7",
+        "@types/jest": "^29.5.12",
+        "@types/supertest": "^6.0.2",
+        "supertest": "^7.0.0",
+        "ts-jest": "^29.1.4",
+        "jest": "^29.7.0",
         "@types/express": "^4.17.21",
         "@typescript-eslint/eslint-plugin": "^5.30.6",
         "@typescript-eslint/parser": "^5.30.6",
