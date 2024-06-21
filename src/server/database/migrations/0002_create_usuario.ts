@@ -5,14 +5,14 @@ export async function up(knex: Knex) {
     return knex.schema
         .createTable(ETableNames.usuario, (table) => {
             table.bigIncrements('id').primary().index();
-            table.string('username').notNullable().checkLength('>', 3);
+            table.string('username').notNullable().checkLength('>=', 3);
             table
                 .string('email')
                 .unique()
                 .index()
                 .notNullable()
-                .checkLength('>', 5);
-            table.string('senha').notNullable().checkLength('>', 6);
+                .checkLength('>=', 5);
+            table.string('senha').notNullable().checkLength('>=', 6);
 
             table.comment('Tabela usada para armazenar usuários do sistema');
         })
