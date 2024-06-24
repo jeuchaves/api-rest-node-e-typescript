@@ -5,6 +5,7 @@ import { object, string } from 'yup';
 import { validation } from '../../shared/middleware';
 import { UsuariosProvider } from '../../database/providers';
 import { IUsuario } from '../../database/models';
+import { PasswordCrypto } from '../../shared/services';
 
 interface IBodyProps extends Omit<IUsuario, 'id' | 'username'> {}
 
@@ -32,15 +33,19 @@ export const signIn = async (
         });
     }
 
-    if (senha !== result.senha) {
+    const passwordMatch = await PasswordCrypto.verifyPassword(
+        senha,
+        result.senha
+    );
+    if (!passwordMatch) {
         return res.status(StatusCodes.UNAUTHORIZED).json({
             errors: {
                 default: 'Email ou senha inválidos',
             },
         });
+    } else {
+        return res
+            .status(StatusCodes.OK)
+            .json({ accessToken: 'teste.teste.teste' });
     }
-
-    return res
-        .status(StatusCodes.OK)
-        .json({ accessToken: 'teste.teste.teste' });
 };
