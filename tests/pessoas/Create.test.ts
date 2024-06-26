@@ -2,7 +2,6 @@ import { StatusCodes } from 'http-status-codes';
 import { testServer } from '../jest.setup';
 
 describe('Pessoas - Create', () => {
-    let cidadeId: number | undefined = undefined;
     let accessToken = '';
     beforeAll(async () => {
         const email = 'create-pessoas@gmail.com';
@@ -14,7 +13,10 @@ describe('Pessoas - Create', () => {
             .post('/entrar')
             .send({ email, senha });
         accessToken = signInRes.body.accessToken;
+    });
 
+    let cidadeId: number | undefined = undefined;
+    beforeAll(async () => {
         const resCidade = await testServer
             .post('/cidades')
             .set({ Authorization: `Bearer ${accessToken}` })
