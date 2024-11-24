@@ -584,17 +584,18 @@
             "PessoaInput": {
                 "type": "object",
                 "properties": {
-                    "nome": {
+                    "nomeCompleto": {
                         "type": "string",
                         "example": "João da Silva"
-                    },
-                    "idade": {
-                        "type": "integer",
-                        "example": 30
                     },
                     "cidadeId": {
                         "type": "integer",
                         "example": 1
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "joao.silva@example.com"
                     }
                 },
                 "required": ["nome", "idade", "cidadeId"]
@@ -606,17 +607,18 @@
                         "type": "integer",
                         "example": 1
                     },
-                    "nome": {
+                    "nomeCompleto": {
                         "type": "string",
                         "example": "João da Silva"
-                    },
-                    "idade": {
-                        "type": "integer",
-                        "example": 30
                     },
                     "cidadeId": {
                         "type": "integer",
                         "example": 1
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "joao.silva@example.com"
                     }
                 },
                 "required": ["id", "nome", "idade", "cidadeId"]
