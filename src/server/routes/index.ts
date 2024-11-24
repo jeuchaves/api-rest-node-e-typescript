@@ -9,15 +9,6 @@ import { ensureAuthenticated } from '../shared/middleware';
 
 const router = Router();
 
-/**
- * @swagger
- * /:
- *   get:
- *     summary: Retorna uma mensagem de boas-vindas
- *     responses:
- *       200:
- *         description: Mensagem de boas-vindas
- */
 router.get('/', (_, res) => {
     return res.send('Olá, DEV!');
 });
