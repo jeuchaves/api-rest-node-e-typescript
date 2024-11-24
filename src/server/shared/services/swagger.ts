@@ -2,7 +2,6 @@ import swaggerJSDoc, { Options } from 'swagger-jsdoc';
 
 const swaggerOptions: Options = {
     definition: {
-        openapi: '0.1.0',
         info: {
             title: 'API Documentation',
             version: '1.0.0',
@@ -14,7 +13,7 @@ const swaggerOptions: Options = {
             },
         ],
     },
-    apis: ['../routes/*.ts'],
+    apis: ['src/server/routes/*.ts'],
 };
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);

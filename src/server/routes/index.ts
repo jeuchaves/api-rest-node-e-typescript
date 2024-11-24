@@ -13,7 +13,61 @@ router.get('/', (_, res) => {
     return res.send('Olá, DEV!');
 });
 
-// Cidades
+/**
+ * @swagger
+ * tags:
+ *   name: Users
+ *   description: Operações relacionadas a usuários
+ */
+
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *     summary: Lista todos os usuários
+ *     tags: [Users]
+ *     responses:
+ *       200:
+ *         description: Sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: integer
+ *                   name:
+ *                     type: string
+ */
+router.get('/users', (req, res) => {
+    res.json([{ id: 1, name: 'John Doe' }]);
+});
+
+/**
+ * @swagger
+ * tags:
+ *  name: Cidades
+ *  description: Endpoints para cidades
+ */
+
+/**
+ * @swagger
+ * /cidades:
+ *  get:
+ *      summary: Retorna todas as cidades
+ *      tags: [Cidades]
+ *      responses:
+ *          200:
+ *              description: Retorna todas as cidades
+ *              content:
+ *                  application/json:
+ *                  schema:
+ *                      type: array
+ *                      items:
+ *                          $ref: '#/components/schemas/Cidade'
+ */
 router.get(
     '/cidades',
     ensureAuthenticated,
