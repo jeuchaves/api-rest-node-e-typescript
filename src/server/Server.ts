@@ -7,8 +7,11 @@ import { router } from './routes';
 import swaggerDocs from './shared/services/swagger.json';
 
 import './shared/services/TranslationsYup';
+import { keycloak } from './shared/services/keycloak';
 
 const server = express();
+
+server.use(keycloak.middleware());
 
 server.use(
     cors({
