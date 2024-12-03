@@ -2,6 +2,8 @@ import { Router } from 'express';
 
 import { ensureAuthenticated } from '../shared/middleware';
 import { CidadesController } from '../controllers';
+import { ensureResourceOwner } from '../shared/middleware/EnsureResourceOwner';
+import { ETableNames } from '../database/ETableNames';
 
 const cidadesRouter = Router();
 
@@ -23,12 +25,14 @@ cidadesRouter
     .delete(
         '/cidades/:id',
         ensureAuthenticated,
+        ensureResourceOwner(ETableNames.cidade),
         CidadesController.deleteByIdValidation,
         CidadesController.deleteById
     )
     .put(
         '/cidades/:id',
         ensureAuthenticated,
+        ensureResourceOwner(ETableNames.cidade),
         CidadesController.updateByIdValidation,
         CidadesController.updateById
     )
