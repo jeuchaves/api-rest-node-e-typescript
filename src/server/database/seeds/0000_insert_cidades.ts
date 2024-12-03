@@ -9,6 +9,7 @@ export const seed = async (knex: Knex) => {
 
     const cidadesToInsert = cidadesDoMatoGrossoDoSul.map((nomeDaCidade) => ({
         nome: nomeDaCidade,
+        owner_id: '1',
     }));
     await knex(ETableNames.cidade).insert(cidadesToInsert);
 };

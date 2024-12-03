@@ -1,0 +1,29 @@
+import type { Knex } from 'knex';
+import { ETableNames } from '../ETableNames';
+
+export async function up(knex: Knex) {
+    return knex.schema
+        .table(ETableNames.cidade, (table) => {
+            table.string('owner_id').notNullable().index();
+            table.comment(
+                'Tabela usada para armazenar cidades do sistema, com o campo owner_id para verificar a propriedade'
+            );
+        })
+        .then(() => {
+            console.log(
+                `# Altered table ${ETableNames.cidade}: Added owner_id`
+            );
+        });
+}
+
+export async function down(knex: Knex) {
+    return knex.schema
+        .table(ETableNames.cidade, (table) => {
+            table.dropColumn('owner_id');
+        })
+        .then(() => {
+            console.log(
+                `# Altered table ${ETableNames.cidade}: Dropped owner_id`
+            );
+        });
+}

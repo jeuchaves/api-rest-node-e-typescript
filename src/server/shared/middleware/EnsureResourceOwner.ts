@@ -4,7 +4,7 @@ import { Knex } from '../../database/knex';
 
 export const ensureResourceOwner = (
     tableName: string,
-    ownerField: string,
+    ownerField: 'owner_id',
     resourceField = 'id'
 ): RequestHandler => {
     return async (req, res, next) => {

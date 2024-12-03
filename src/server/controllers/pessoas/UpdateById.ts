@@ -9,7 +9,7 @@ import { PessoasProvider } from '../../database/providers';
 interface IParamProps {
     id?: number;
 }
-interface IBodyProps extends Omit<IPessoa, 'id'> {}
+interface IBodyProps extends Omit<IPessoa, 'id' | 'owner_id'> {}
 
 export const updateByIdValidation = validation((getSchema) => ({
     params: getSchema<IParamProps>(

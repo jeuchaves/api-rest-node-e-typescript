@@ -3,4 +3,5 @@ export interface IPessoa {
     nomeCompleto: string;
     email: string;
     cidadeId: number;
+    owner_id: string;
 }
